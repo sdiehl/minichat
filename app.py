@@ -1,13 +1,11 @@
 # Micro gevent chatroom.
 # ----------------------
 # Make things as simple as possible, but not simpler.
-
-from flask import Flask, render_template, request
+from gevent import monkey; monkey.patch_all()
+from flask import Flask, render_template, request, json
 
 from gevent import queue
 from gevent.pywsgi import WSGIServer
-
-import simplejson as json
 
 app = Flask(__name__)
 app.debug = True
